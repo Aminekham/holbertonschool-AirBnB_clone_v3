@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""This is the routing of our API"""
 from flask import jsonify
 from api.v1.views import app_views
 
