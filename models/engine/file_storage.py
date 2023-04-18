@@ -81,7 +81,7 @@ class FileStorage:
             x = i.split('.')
             if x[0] == cls:
                 c = c + 1
-        if all == None:
+        if len(all) == 0:
             c = 0
         return(c)
 
