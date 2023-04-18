@@ -73,6 +73,8 @@ class FileStorage:
         """counting the number of objects for a certain class"""
         c = 0
         all = self.__objects
+        if len(all) == 0:
+            return(0)
         if cls not in classes:
             for i in all:
                 c = c + 1
@@ -81,8 +83,6 @@ class FileStorage:
             x = i.split('.')
             if x[0] == cls:
                 c = c + 1
-        if len(all) == 0:
-            c = 0
         return(c)
 
     def delete(self, obj=None):
