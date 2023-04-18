@@ -6,4 +6,6 @@ from api.v1.views import app_views
 @app_views.route('/status')
 def status():
     """Return the status of the API"""
-    return (jsonify({'status': 'OK'}))
+    x = jsonify({'status': 'OK'})
+    x.headers.add('Content-Type', 'application/json')
+    return(x)
