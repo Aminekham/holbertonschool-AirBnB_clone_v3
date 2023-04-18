@@ -63,7 +63,7 @@ class FileStorage:
         all = self.__objects
         if cls not in classes:
             return(None)
-        for i in all:
+        for i in all.keys():
             x = i.split('.')
             if x[0] == cls and x[1] == id:
                 return(all[i])
