@@ -76,8 +76,8 @@ class FileStorage:
         if cls not in classes:
             for i in all:
                 c = c + 1
-                return(c)
-        for i in all : 
+            return(c)
+        for i in all.keys() : 
             x = i.split('.')
             if x[0] == cls:
                 c = c + 1
