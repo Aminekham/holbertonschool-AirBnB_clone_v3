@@ -70,20 +70,16 @@ class FileStorage:
         return(None)
     
     def count(self, cls=None):
-        """counting the number of objects for a certain class"""
-        c = 0
-        all = self.__objects
-        if len(all) == 0:
-            return(0)
-        if cls not in classes:
-            for i in all:
-                c = c + 1
-            return(c)
-        for i in all.keys() : 
-            x = i.split('.')
-            if x[0] == cls:
-                c = c + 1
-        return(c)
+        """Count the number of objects in the storage."""
+        count = 0
+        if cls is None:
+            count = len(self.__objects)
+        else:
+            for obj in self.__objects.values():
+                if isinstance(obj, cls):
+                    count += 1
+        return count
+
 
     def delete(self, obj=None):
         """delete obj from __objects if it’s inside"""
