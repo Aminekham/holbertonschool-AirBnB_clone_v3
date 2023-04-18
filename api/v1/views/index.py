@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """This is the routing of our API"""
 from flask import jsonify
-from api.v1.views import app_views
+from api.v1.app import app
 
-@app_views.route('/status')
+@app.route('/status')
 def status():
     """Return the status of the API"""
     return jsonify({'status': 'OK'})
