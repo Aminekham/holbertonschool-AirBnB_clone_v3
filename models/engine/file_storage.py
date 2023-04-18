@@ -66,7 +66,8 @@ class FileStorage:
         for i in all.keys():
             x = i.split(".")
             if x[0] == str(cls) and x[1] == str(id):
-                return(all[i])
+                if isinstance(all[i], cls):
+                    return(all[i])
         return(None)
     
     def count(self, cls=None):
