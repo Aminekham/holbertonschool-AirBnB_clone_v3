@@ -76,13 +76,13 @@ class FileStorage:
         if cls not in classes:
             for i in all:
                 c = c + 1
-                if i == None:
-                    c = 0
             return(c)
         for i in all.keys() : 
             x = i.split('.')
             if x[0] == cls:
                 c = c + 1
+        if all == None:
+            c = 0
         return(c)
 
     def delete(self, obj=None):
