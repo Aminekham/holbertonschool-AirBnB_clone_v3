@@ -64,8 +64,8 @@ class FileStorage:
         if cls not in classes:
             return(None)
         for i in all.keys():
-            x = i.split('.')
-            if x[0] == cls and x[1] == id:
+            x = i.split(".")
+            if x[0] == str(cls) and x[1] == str(id):
                 return(all[i])
         return(None)
     
