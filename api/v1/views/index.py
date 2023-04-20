@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This is the routing of our API"""
-import json
+from flask import Flask, jsonify
 from api.v1.views import app_views
 from models import storage
 
@@ -8,8 +8,7 @@ from models import storage
 def status():
     """Return the status of the API"""
     x = {"status":"OK"}
-    x_j = json.loads(x)
-    return(x_j)
+    return(jsonify(x))
 
 
 @app_views.route('/api/v1/stats')
@@ -27,5 +26,4 @@ def get_stats():
              "reviews": reviews_count,
              "states": states_count,
              "users": users_count}
-    stats_j = json.loads(stats)
-    return (stats_j)
+    return(jsonify(stats))
