@@ -1,18 +1,17 @@
 #!/usr/bin/python3
 """This is the routing of our API"""
-from flask import jsonify
+import json
 from api.v1.views import app_views
 from models import storage
 
 @app_views.route('/status')
 def status():
     """Return the status of the API"""
-    x = jsonify({'status': 'OK'})
-    x.headers.add('Content-Type', 'application/json')
+    x = json.loads({"status":"OK"})
     return(x)
 
 
-@app_views.route('/api/v1/stats', methods=['GET'], strict_slashes=False)
+@app_views.route('/api/v1/stats')
 def get_stats():
     """Retrieves the number of objects by type"""
     amenities_count = storage.count("Amenity")
@@ -27,4 +26,4 @@ def get_stats():
              "reviews": reviews_count,
              "states": states_count,
              "users": users_count}
-    return jsonify(stats)
+    return json.loads(stats)
