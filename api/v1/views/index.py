@@ -8,8 +8,8 @@ from models import storage
 def status():
     """Return the status of the API"""
     x = {"status":"OK"}
-    x.json()
-    return(x)
+    x_j = json.loads(x)
+    return(x_j)
 
 
 @app_views.route('/api/v1/stats')
@@ -27,5 +27,5 @@ def get_stats():
              "reviews": reviews_count,
              "states": states_count,
              "users": users_count}
-    stats_j = stats.json()
+    stats_j = json.loads(stats)
     return (stats_j)
