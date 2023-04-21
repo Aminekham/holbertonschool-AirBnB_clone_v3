@@ -59,14 +59,13 @@ class DBStorage:
         """commit all changes of the current database session"""
         self.__session.commit()
 
+
     def get(self, cls, id):
-        """this method is used to get and object by its id"""
-        if cls not in classes:
-            return(None)
-        obj_get = self.__session.query(cls).get(id)
-        if obj_get == None:
-            return(None)
-        return(obj_get)
+        if id is not None and cls is not None:
+            objs = [obj for obj in self.__session.query(cls) if obj.id == id]
+            return next(iter(objs), None)
+        return None
+
     
     def count(self, cls = None):
         c = 0
