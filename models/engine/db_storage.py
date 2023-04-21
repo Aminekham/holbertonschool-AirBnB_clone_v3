@@ -67,19 +67,14 @@ class DBStorage:
         return None
 
     
-    def count(self, cls = None):
-        c = 0
-        if cls == None:
-            for k in classes:
-                objects = self.__session.query(classes[k]).all()
-                for i in objects:
-                    c = c + 1
-            return(c)
-        else:
-            objects = self.__session.query(classes[cls]).all()
-            for i in objects:
-                c = c + 1
-        return(c)
+    def count(self, cls=None):
+        count = 0
+        for clss in classes.values():
+            if cls is None or cls is clss or cls is classes[clss]:
+                count += self.__session.query(clss).count()
+        return count
+
+
 
     def delete(self, obj=None):
         """delete from the current database session obj if not None"""
