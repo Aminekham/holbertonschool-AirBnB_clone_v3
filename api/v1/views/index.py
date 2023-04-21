@@ -8,4 +8,3 @@ from models import storage
 def status():
     """Return the status of the API"""
     return(jsonify({"status": "OK"}))
-
