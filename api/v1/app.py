@@ -8,6 +8,7 @@ from models import storage
 
 app = Flask(__name__)
 
+app.register_blueprint(app_views, url_prefix='/api/v1')
 
 @app_views.route('/status')
 def status():
@@ -28,7 +29,6 @@ def close_db(error):
 
 
 if __name__ == "__main__":
-    app.register_blueprint(app_views, url_prefix='/api/v1')
 
     host = environ.get('HBNB_API_HOST', '0.0.0.0')
     port = environ.get('HBNB_API_PORT', 5000)
