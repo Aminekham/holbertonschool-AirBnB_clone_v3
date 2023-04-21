@@ -59,15 +59,9 @@ class FileStorage:
             pass
 
     def get(self, cls, id):
-        """getting a whole object by its class and its id from a file"""
-        all = self.__objects
-        if cls not in classes:
-            return(None)
-        for i in all.keys():
-            x = i.split(".")
-            if x[0] == str(cls) and x[1] == str(id):
-                return(all[i])
-        return(None)
+        key = "{}.{}".format(cls.__name__, id)
+        return (self.__objects.get(key, None))
+
     
     def count(self, cls=None):
         """Count the number of objects in the storage."""
