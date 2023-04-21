@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 """This is the main module that defines the Flask app instance"""
 from flask import Flask, jsonify, make_response, current_app
+from flask_cors import CORS
 from os import environ
 from api.v1.views import app_views
 from models import storage
 
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
 
 @app_views.route('/status')
