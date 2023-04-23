@@ -22,14 +22,6 @@ def not_found(error):
     """Handles 404 errors"""
     return make_response(jsonify({'error': 'Not found'}), 404)
 
-@app.route('/api/v1/stats')
-def stats():
-    """giving the stats of our objects"""
-    all_objects = {"amenities": 1, "cities": 0, "places": 0, "reviews": 0, "states": 0, "users": 0}
-    for i in all_objects.keys():
-        all_objects[i] = storage.count(i)
-    return jsonify(all_objects)
-
 
 @app.teardown_appcontext
 def close_db(error):
