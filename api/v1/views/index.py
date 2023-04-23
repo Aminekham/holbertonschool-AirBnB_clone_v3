@@ -15,7 +15,7 @@ def status():
 @app_views.route('/stats')
 def stats():
     return jsonify(amenities=storage.count(amenity.Amenity),
-                   cities=storage.count(city.City),
+                   cities=storage.count(city),
                    places=storage.count(place.Place),
                    reviews=storage.count(review.Review),
                    states=storage.count(state.State),
