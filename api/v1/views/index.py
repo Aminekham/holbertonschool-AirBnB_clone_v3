@@ -12,7 +12,7 @@ def status():
     return(jsonify({"status": "OK"}))
 
 
-@app.route('/api/v1/stats')
+@app.route('/stats')
 def stats():
     """giving the stats of our objects"""
     all_objects = {"amenities": 1, "cities": 0, "places": 0, "reviews": 0, "states": 0, "users": 0}
