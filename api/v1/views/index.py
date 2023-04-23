@@ -14,9 +14,9 @@ def status():
 
 @app_views.route('/stats')
 def stats():
-    """giving the stats of our objects"""
-    count_values = {}
-    obj_list = [amenity.Amenity, city.City, place.Place, review.Review, state.State, user.User]
-    for class_name in obj_list:
-        count_values[class_name.__name__.lower()] = storage.count(class_name)
-    return(jsonify(count_values))
+    return jsonify(amenities=storage.count(amenity.Amenity),
+                   cities=storage.count(city.City),
+                   places=storage.count(place.Place),
+                   reviews=storage.count(review.Review),
+                   states=storage.count(state.State),
+                   users=storage.count(user.User))
