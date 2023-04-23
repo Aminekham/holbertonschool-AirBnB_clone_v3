@@ -67,12 +67,16 @@ class DBStorage:
         return None
 
     
-    def count(self, cls=None):
-        count = 0
-        for clss in classes.values():
-            if cls is None or cls is clss or cls is classes[clss]:
-                count += 1
-        return count
+    def count(self, target_class=None):
+        result = {}
+        for class_name, class_object in classes.items():
+            if target_class is None or target_class is class_object or target_class is class_name:
+                objects = self.__session.query(class_object).all()
+                for obj in objects:
+                    key = f"{obj.__class__.__name__}.{obj.id}"
+                    result[key] = obj
+        return(len(result))
+
 
 
 
