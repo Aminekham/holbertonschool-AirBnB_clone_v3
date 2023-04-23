@@ -15,7 +15,18 @@ def status():
 @app.route('/stats')
 def stats():
     """giving the stats of our objects"""
-    all_objects = {amenity: 1, city: 0, place: 0, review: 0, state: 0, user: 0}
-    for i in all_objects.keys():
-        all_objects[i] = storage.count(i)
-    return jsonify(all_objects)
+    amenity_count = storage.count(amenity.Amenity)
+    city_count = storage.count(city.City)
+    place_count = storage.count(place.Place)
+    review_count = storage.count(review.Review)
+    state_count = storage.count(state.State)
+    user_count = storage.count(user.User)
+    result = jsonify({
+        "amenities": amenity_count,
+        "cities": city_count,
+        "places": place_count,
+        "reviews": review_count,
+        "states": state_count,
+        "users": user_count
+    })
+    return(result)
